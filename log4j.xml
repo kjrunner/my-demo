@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration debug="true">
+
+   <!-- Log file for idm logging -->
+   <appender name="myDemoRFA" class="org.apache.log4j.RollingFileAppender">
+      <param name="File" value="/mydemo-log/my-demo-app.log"/>
+      <param name="MaxFileSize" value="1024KB"/>
+      <param name="MaxBackupIndex" value="10"/>
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern"
+            value="%d{ISO8601} %p - %t - %c - %m%n"/>
+      </layout>
+   </appender>
+   
+  
+   <appender name="rootRFA" class="org.apache.log4j.RollingFileAppender">
+      <param name="File" value="/mydemo-log/my-demo-all.log"/>
+      <param name="MaxFileSize" value="10MB"/>
+      <param name="MaxBackupIndex" value="10"/>
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern"
+            value="%d{ISO8601} %p - %c - %m%n"/>
+      </layout>
+   </appender>
+
+   <!-- idm code appender -->
+   <logger name="demo.template" additivity="true">
+      <level value="debug"/>
+      <appender-ref ref="myDemoRFA"/>
+   </logger>
+   
+   <!-- cox code appender -->
+   <logger name="org.apache" additivity="true">
+      <level value="debug"/>
+      <appender-ref ref="rootRFA"/>
+   </logger>
+
+    <logger name="spark" additivity="true">
+      <level value="debug"/>
+      <appender-ref ref="rootRFA"/>
+   </logger>
+
+    <logger name="freemaker" additivity="true">
+      <level value="debug"/>
+      <appender-ref ref="rootRFA"/>
+   </logger>
+   
+
+
+   <root>
+      <priority value="warn" />
+      <appender-ref ref="rootRFA"/>
+   </root>
+
+</log4j:configuration>
