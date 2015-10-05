@@ -10,7 +10,7 @@ my demo repo
   Release Notes
   -------------
 
-  demo.template.Tranformer.processTemplateString: Update template String to include Map values.
+  demo.template.Tranformer.processTemplateString: Updates template String to include Map values.
 
   demo.template.Controller:  Includes main method.  Run the following maven command (v. 3.3.3) to test Transformer.
 
@@ -19,7 +19,8 @@ my demo repo
   
   * Note the main method will launch the Spark web server to display the results.  
 
-  * Main uses data set in demo.properties.  Modify demo.properties to alter the templateString and key/values.
+  * Modify mydemo.properties to alter the templateString and key/values used by the main method.  
+    Defaults will be used if either property remains commented out.  
 
 
   Spark URL
